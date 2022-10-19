@@ -9,9 +9,16 @@ const controllerGetById = async (req, res) => {
   const { id } = req.params;
   const result = await productsService.serviceGetById(id);
   res.status(result.status).json(result.message);
+};
+
+const controllerCreateProduct = async (req, res) => {
+  const { name } = req.body;
+  const result = await productsService.serviceCreateProduct(name);
+  res.status(result.status).json(result.message);
  };
 
 module.exports = {
   controllerGetAll,
   controllerGetById,
+  controllerCreateProduct,
 };

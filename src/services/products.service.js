@@ -28,9 +28,32 @@ const serviceGetById = async (id) => {
     status: 200,
     message: result,
   };
+};
+
+const serviceCreateProduct = async (name) => {
+  if (!name) {
+    return {
+      status: 400,
+      message: { message: '"name" is required' },
+    };
+  }
+  if (name.length < 5) {
+    return {
+      status: 422,
+      message: { message: '"name" length must be at least 5 characters long' },
+    };
+  }
+
+  const data = await productsModel.modelCreateProduct(name);
+  const response = await productsModel.modelGetById(data);
+  return {
+    status: 201,
+    message: response,
+  };
  };
 
 module.exports = {
   serviceGetAll,
   serviceGetById,
+  serviceCreateProduct,
 };
