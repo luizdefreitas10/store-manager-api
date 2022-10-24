@@ -1,6 +1,6 @@
 const chai = require('chai');
 const sinon = require('sinon');
-const sinonChain = require('sinon-chai');
+const sinonChai = require('sinon-chai');
 
 const productsService = require('../../../src/services/products.service');
 const productsController = require('../../../src/controllers/products.controler');
